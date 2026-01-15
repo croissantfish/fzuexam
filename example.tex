@@ -1,0 +1,79 @@
+\documentclass[,
+  addpoints,
+  % answers,
+  coursename={测试课程},
+  examtype={A},
+  at={期末},
+  examdate={2026年1月21日},
+]{fzuexam}
+
+\usepackage{zhlipsum}
+
+\begin{document}
+\question[30] 单项选择题（15题，每题2分，请将答案写到题号后的空格中）
+\begin{parts}
+  \part \fillin[A][1.5em] 这是第一道选择题，choices环境排版选项，每个选项一行
+  \begin{choices}
+    \choice 选项1
+    \choice 选项2
+    \choice 选项3
+    \choice 选项4
+    \choice 选项5
+  \end{choices}
+  \part \fillin[C][1.5em] 这是第二道选择题，oneparchoices环境排版选项，所有选项一行，需要插入空行进行换行
+
+  \begin{oneparchoices}
+    \choice 选项1
+    \choice 选项2
+    \choice 选项3
+    \choice 选项4
+    \choice 选项5
+  \end{oneparchoices}
+\end{parts}
+\droptotalpoints
+
+\question 填空题（2题，每题2分）
+\begin{parts}
+  \part[2] 自监督学习中，通过构造正负样本对来学习表征的方法称为 \fillin[对比] 学习。
+  \part[2] 在轨迹数据预处理中，将原始GPS点序列转换为语义停留区域的过程称为 \fillin[停留点检测]。
+\end{parts}
+\droptotalpoints
+
+\question[30] 综合题
+
+需要明确小分的地方需要暂时使用\verb`\noaddpoints`关闭分数统计 
+
+（未关闭统计示例）
+% \noaddpoints
+\begin{parts}
+  \part[10] \zhlipsum[1]
+  \part[10] \zhlipsum[1]
+\end{parts}
+\droptotalpoints
+
+\question[30] 综合题
+
+（关闭统计示例）
+\noaddpoints
+\begin{parts}
+  \part[10] \zhlipsum[1]
+  \part[10] \zhlipsum[1]
+\end{parts}
+\droptotalpoints
+\addpoints
+
+
+\question[10] 简答题（2题，每题5分）
+\begin{parts}
+  \part \zhlipsum[1]
+  \begin{solutionorlines}[6cm]
+    \zhlipsum[1]
+  \end{solutionorlines}
+
+  \part \zhlipsum[1]
+  \begin{solutionorlines}[6cm]
+    \zhlipsum[1]
+  \end{solutionorlines}
+\end{parts}
+\droptotalpoints
+\end{document}
