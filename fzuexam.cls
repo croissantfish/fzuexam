@@ -111,32 +111,10 @@
       \large
       \bfseries
       \begin{tabular}{p{.15\linewidth}p{.15\linewidth}p{.15\linewidth}p{.15\linewidth}p{.15\linewidth}p{.15\linewidth}}
-        \multicolumn{3}{p{.45\linewidth}}{课程名称：\uline{\null\hfill \fzuexam@coursename \hfill\null}} & \multicolumn{3}{p{.45\linewidth}}{考试日期：\uline{\null\hfill \fzuexam@examdate \hfill\null}}                                                                     \\
-        \multicolumn{2}{p{.3\linewidth}}{姓名： \uline{\null\hfill\null}}                              & \multicolumn{2}{p{.3\linewidth}}{学号： \uline{\null\hfill\null}}                            & \multicolumn{2}{p{.3\linewidth}}{专业或类别： \uline{\null\hfill\null}} \\
+        \multicolumn{3}{p{.45\linewidth}}{课程名称：\uline{\null\hfill \fzuexam@coursename \hfill\null}} & \multicolumn{3}{p{.48\linewidth}}{考试日期：\uline{\null\hfill \fzuexam@examdate \hfill\null}}                                                                     \\
+        \multicolumn{2}{p{.2\linewidth}}{姓名： \uline{\null\hfill\null}}                              & \multicolumn{2}{p{.3\linewidth}}{学号： \uline{\null\hfill\null}}                            & \multicolumn{2}{p{.41\linewidth}}{专业或类别： \uline{\null\hfill\null}} \\
       \end{tabular}
       \singlespacing
-    \end{center}
-    \vspace{2pt}
-    \begin{center}
-      \bfseries
-      \cellwidth{1cm}
-      \hqword{大题}
-      \hpword{分值}
-      \hsword{得分}
-      \htword{总分}
-      \null\hfill
-      \gradetable[h][questions]
-      \hfill
-      \begin{tabular}{|c|}
-        \hline
-        \Gape[10pt]{~~累分人~~} \\
-        \hline
-        \multirow{2}*{}      \\
-        \\
-        \hline
-      \end{tabular}
-      \hfill
-      \null
     \end{center}
     \ifnum\totvalue{numquestions}>0
     \begin{center}
