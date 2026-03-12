@@ -69,6 +69,7 @@
 \renewcommand{\partlabel}{\arabic{partno}. }
 \renewcommand{\partshook}{\setlength{\leftmargin}{0pt}\normalsize\normalfont}
 \renewcommand{\solutiontitle}{\noindent\textbf{解答:}\par\noindent}
+\regtotcounter{numquestions}
 \unframedsolutions
 \setlength{\rightpointsmargin}{2.2cm}
 \setlength\linefillheight{28pt}
@@ -137,6 +138,39 @@
       \hfill
       \null
     \end{center}
+    \ifnum\totvalue{numquestions}>0
+    \begin{center}
+      \begin{tikzpicture}[,
+        gtline/.style={draw, line width=0.8pt},
+      ]
+          \pgfmathtruncatemacro{\nq}{\totvalue{numquestions}}
+          \pgfmathsetmacro{\cellwidth}{1.6}
+          \pgfmathsetmacro{\cellheight}{0.8}
+          \foreach \i in {-2,...,\nq} {
+            \draw[gtline] (\i*\cellwidth, 0) -- (\i*\cellwidth, -2.4);
+          }
+          \draw[gtline] ({-2*\cellwidth}, 0) -- ({\nq*\cellwidth}, 0);
+          \draw[gtline] ({-2*\cellwidth}, -\cellheight) -- ({\nq*\cellwidth}, -\cellheight);
+          \draw[gtline] ({-2*\cellwidth}, -2*\cellheight) -- ({\nq*\cellwidth}, -2*\cellheight);
+          \draw[gtline] ({-2*\cellwidth}, -3*\cellheight) -- ({\nq*\cellwidth}, -3*\cellheight);
+          \node at ({-1.5*\cellwidth}, -0.5*\cellheight) {\textbf{大题}};
+          \node at ({-1.5*\cellwidth}, -1.5*\cellheight) {\textbf{分值}};
+          \node at ({-1.5*\cellwidth}, -2.5*\cellheight) {\textbf{得分}};
+          \foreach \i in {1, ..., \nq} {
+            \node at ({\cellwidth*(\i-1.5)}, -0.5*\cellheight) {\textbf{\zhnumber{\i}}};
+            \node at ({\cellwidth*(\i-1.5)}, -1.5*\cellheight) {\textbf{\pointsofquestion{\i}}};
+          }
+          \node at ({(\nq-0.5)*\cellwidth}, -0.5*\cellheight) {\textbf{总分}};
+          \node at ({(\nq-0.5)*\cellwidth}, -1.5*\cellheight) {\textbf{\numpoints}};
+          \node at ({(\nq+0.5)*\cellwidth}, -0.5*\cellheight) {\textbf{累分人}};
+          \draw[gtline] ({(\nq+1)*\cellwidth}, 0) -- ({(\nq+1)*\cellwidth}, -3*\cellheight);
+          \draw[gtline] ({(\nq+1)*\cellwidth}, 0) -- ({\nq*\cellwidth}, 0);
+          \draw[gtline] ({(\nq+1)*\cellwidth}, -\cellheight) -- ({\nq*\cellwidth}, -\cellheight);
+          % \draw[gtline] ({(\nq+1)*\cellwidth}, -2*\cellheight) -- ({\nq*\cellwidth}, -2*\cellheight);
+          \draw[gtline] ({(\nq+1)*\cellwidth}, -3*\cellheight) -- ({\nq*\cellwidth}, -3*\cellheight);
+      \end{tikzpicture}
+    \end{center}
+    \fi
     % \qformat{\chinese{\thequestion}、}
   \fi
   \begin{questions}
