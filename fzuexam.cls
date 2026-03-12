@@ -23,7 +23,6 @@
 \RequirePackage{tikz}
 \RequirePackage[normalem]{ulem}
 \RequirePackage[margin=1in]{geometry}
-\RequirePackage[breakable, skins, most]{tcolorbox}
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{enumitem}
