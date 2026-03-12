@@ -11,6 +11,8 @@
 \DeclareStringOption[]{coursename}
 \DeclareStringOption[期末]{at}
 \DeclareStringOption[\today]{examdate}
+\DeclareStringOption[1.6]{gtcellwidth}
+\DeclareStringOption[0.8]{gtcellheight}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{exam}}
 \ProcessKeyvalOptions{fzuexam}
 \LoadClass[a4paper,addpoints]{exam}
@@ -60,6 +62,8 @@
 }
 
 \newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
+\newcommand*{\gtcellwidth}{\fzuexam@gtcellwidth}
+\newcommand*{\gtcellheight}{\fzuexam@gtcellheight}
 \renewcommand{\thequestion}{\zhnum{question}}
 \renewcommand{\questionlabel}{
   \large
@@ -120,31 +124,31 @@
     \begin{center}
       \begin{tikzpicture}[,
         gtline/.style={draw, line width=0.8pt},
+        gtcelltext/.style={font=\bfseries},
       ]
           \pgfmathtruncatemacro{\nq}{\totvalue{numquestions}}
-          \pgfmathsetmacro{\cellwidth}{1.6}
-          \pgfmathsetmacro{\cellheight}{0.8}
+          \pgfmathsetmacro{\cellwidth}{\fzuexam@gtcellwidth}
+          \pgfmathsetmacro{\cellheight}{\fzuexam@gtcellheight}
           \foreach \i in {-2,...,\nq} {
-            \draw[gtline] (\i*\cellwidth, 0) -- (\i*\cellwidth, -2.4);
+            \draw[gtline] (\i*\cellwidth, 0) -- (\i*\cellwidth, -3*\cellheight);
           }
           \draw[gtline] ({-2*\cellwidth}, 0) -- ({\nq*\cellwidth}, 0);
           \draw[gtline] ({-2*\cellwidth}, -\cellheight) -- ({\nq*\cellwidth}, -\cellheight);
           \draw[gtline] ({-2*\cellwidth}, -2*\cellheight) -- ({\nq*\cellwidth}, -2*\cellheight);
           \draw[gtline] ({-2*\cellwidth}, -3*\cellheight) -- ({\nq*\cellwidth}, -3*\cellheight);
-          \node at ({-1.5*\cellwidth}, -0.5*\cellheight) {\textbf{大题}};
-          \node at ({-1.5*\cellwidth}, -1.5*\cellheight) {\textbf{分值}};
-          \node at ({-1.5*\cellwidth}, -2.5*\cellheight) {\textbf{得分}};
+          \node[gtcelltext] at ({-1.5*\cellwidth}, -0.5*\cellheight) {大题};
+          \node[gtcelltext] at ({-1.5*\cellwidth}, -1.5*\cellheight) {分值};
+          \node[gtcelltext] at ({-1.5*\cellwidth}, -2.5*\cellheight) {得分};
           \foreach \i in {1, ..., \nq} {
-            \node at ({\cellwidth*(\i-1.5)}, -0.5*\cellheight) {\textbf{\zhnumber{\i}}};
-            \node at ({\cellwidth*(\i-1.5)}, -1.5*\cellheight) {\textbf{\pointsofquestion{\i}}};
+            \node[gtcelltext] at ({\cellwidth*(\i-1.5)}, -0.5*\cellheight) {\zhnumber{\i}};
+            \node[gtcelltext] at ({\cellwidth*(\i-1.5)}, -1.5*\cellheight) {\pointsofquestion{\i}};
           }
-          \node at ({(\nq-0.5)*\cellwidth}, -0.5*\cellheight) {\textbf{总分}};
-          \node at ({(\nq-0.5)*\cellwidth}, -1.5*\cellheight) {\textbf{\numpoints}};
-          \node at ({(\nq+0.5)*\cellwidth}, -0.5*\cellheight) {\textbf{累分人}};
+          \node[gtcelltext] at ({(\nq-0.5)*\cellwidth}, -0.5*\cellheight) {总分};
+          \node[gtcelltext] at ({(\nq-0.5)*\cellwidth}, -1.5*\cellheight) {\numpoints};
+          \node[gtcelltext] at ({(\nq+0.5)*\cellwidth}, -0.5*\cellheight) {累分人};
           \draw[gtline] ({(\nq+1)*\cellwidth}, 0) -- ({(\nq+1)*\cellwidth}, -3*\cellheight);
           \draw[gtline] ({(\nq+1)*\cellwidth}, 0) -- ({\nq*\cellwidth}, 0);
           \draw[gtline] ({(\nq+1)*\cellwidth}, -\cellheight) -- ({\nq*\cellwidth}, -\cellheight);
-          % \draw[gtline] ({(\nq+1)*\cellwidth}, -2*\cellheight) -- ({\nq*\cellwidth}, -2*\cellheight);
           \draw[gtline] ({(\nq+1)*\cellwidth}, -3*\cellheight) -- ({\nq*\cellwidth}, -3*\cellheight);
       \end{tikzpicture}
     \end{center}
